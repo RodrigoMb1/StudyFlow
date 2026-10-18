@@ -1,0 +1,4760 @@
+/* ========================================
+   1. VARIÁVEIS DE CORES
+   ======================================== */
+
+:root {
+    color-scheme: light;
+
+    --cor-fundo: #EEEEEE;
+    --cor-fundo-inicial: #A4C3C4;
+
+    --cor-superficie: #FFFFFF;
+    --cor-superficie-secundaria: #F5F7F7;
+
+    --cor-texto: #263638;
+    --cor-texto-secundario: #687779;
+
+    --cor-principal: #527F83;
+    --cor-principal-hover: #3F696D;
+
+    --cor-borda: #D7E0E0;
+    --cor-destaque: #B9D9D9;
+
+    --cor-sombra: rgb(27 52 54 / 10%);
+
+    --raio-card: 18px;
+    --raio-botao: 10px;
+
+    --largura-maxima: 1200px;
+}
+
+
+/* ========================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+   ======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+
+    color: var(--cor-texto);
+
+    background: linear-gradient(
+        135deg,
+        var(--cor-fundo-inicial),
+        var(--cor-fundo)
+    );
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+label {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    color: inherit;
+}
+
+a {
+    color: var(--cor-principal);
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.25;
+}
+
+::selection {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+}
+
+
+/* ========================================
+   3. ACESSIBILIDADE
+   ======================================== */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+    border: 0;
+}
+
+:focus-visible {
+    outline: 3px solid #438FA5;
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   4. CABEÇALHO
+   ======================================== */
+
+#cabecalho {
+    position: relative;
+    z-index: 30;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: min(
+        calc(100% - 48px),
+        var(--largura-maxima)
+    );
+
+    margin: 0 auto;
+    padding: 22px 0;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+    color: var(--cor-principal);
+
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+
+    cursor: pointer;
+}
+
+.cabecalho-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.botao-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 10px 16px;
+
+    color: var(--cor-texto);
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-botao);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.botao-cabecalho .icone {
+    width: 20px;
+    height: 20px;
+}
+
+.botao-cabecalho:hover {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   5. CONTEÚDO PRINCIPAL
+   ======================================== */
+
+#conteudo-principal {
+    display: grid;
+
+    grid-template-columns:
+         minmax(0, 2fr)
+         minmax(240px, 0.8fr);
+
+    gap: 28px;
+
+    width: min(
+        calc(100% - 48px),
+        var(--largura-maxima)
+    );
+
+    margin: 32px auto 48px;
+}
+
+#secao-principal {
+    grid-column: 1 / -1;
+
+    padding: 32px;
+
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-card);
+
+    box-shadow: 0 8px 24px var(--cor-sombra);
+}
+
+#secao-principal h1 {
+    margin: 0 auto 16px;
+    max-width: 760px;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    line-height: 1.2;
+    text-align: center;
+}
+
+
+.welcome-text {
+    max-width: 680px;
+    margin: 0 auto 26px;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+}
+
+
+/* ========================================
+   6. ÁREA DO ASSISTENTE
+   ======================================== */
+
+.assistant-wrapper {
+    display: grid;
+    gap: 10px;
+
+    max-width: 760px;
+    padding: 20px;
+
+    background: var(--cor-superficie-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 14px;
+}
+
+.assistant-wrapper > span {
+    font-weight: 700;
+}
+
+.assistant-wrapper p {
+    margin-bottom: 4px;
+    color: var(--cor-texto-secundario);
+}
+
+.assistant-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 13px 15px;
+
+    color: var(--cor-texto);
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-botao);
+}
+
+.assistant-wrapper input::placeholder {
+    color: var(--cor-texto-secundario);
+}
+
+.btn-assistant-send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: #FFFFFF;
+    background: var(--cor-principal);
+
+    border-radius: var(--raio-botao);
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.btn-assistant-send:hover {
+    background: var(--cor-principal-hover);
+}
+
+
+
+/* ========================================
+   7. CALENDÁRIO
+   ======================================== */
+
+#calendario,
+#painel-compromissos-hoje {
+    min-width: 0;
+    padding: 24px;
+
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-card);
+
+    box-shadow: 0 8px 24px var(--cor-sombra);
+}
+
+/* PAINEL DE COMPROMISSOS - PC */
+
+@media (min-width: 901px) {
+    #painel-compromissos-hoje {
+        border-radius: 35px;
+    }
+}
+
+
+.calendario-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.calendario-topo h2,
+#painel-compromissos-hoje h2 {
+    margin-bottom: 0;
+    font-size: 1.35rem;
+}
+
+.botao-adicionar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 16px;
+
+    color: #FFFFFF;
+    background: var(--cor-principal);
+
+    border-radius: var(--raio-botao);
+
+    font-weight: 600;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.botao-adicionar:hover {
+    background: var(--cor-principal-hover);
+    transform: translateY(-1px);
+}
+
+.calendario-caixa {
+    padding: 16px;
+
+    background: var(--cor-superficie-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 14px;
+}
+
+.calendario-mes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.calendario-mes h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.seta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+
+    color: var(--cor-texto);
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 50%;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.seta:hover {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+}
+
+.calendario-grade {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 4px;
+}
+
+.calendario-grade th {
+    padding: 8px 0;
+
+    color: var(--cor-texto-secundario);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.calendario-grade td {
+    height: 48px;
+    padding: 0;
+    text-align: center;
+}
+
+.dia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: min(100%, 42px);
+    aspect-ratio: 1;
+
+    padding: 0;
+
+    color: var(--cor-texto);
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.dia:hover {
+    background: var(--cor-destaque);
+    border-color: var(--cor-principal);
+}
+
+.dia-hoje {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+    font-weight: 700;
+}
+
+.dia-hoje:hover {
+    color: #FFFFFF;
+    background: var(--cor-principal-hover);
+}
+
+
+/* ========================================
+   8. COMPROMISSOS DE HOJE
+   ======================================== */
+
+#painel-compromissos-hoje h2 {
+    margin-bottom: 22px;
+}
+
+.appointments-list {
+    display: grid;
+    gap: 8px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.appointment-item {
+    position: relative;
+
+    display: grid;
+    min-width: 0;
+    box-sizing: border-box;
+    grid-template-columns: 18px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+
+    
+    padding: 8px 10px;
+
+
+    background: var(--cor-superficie-secundaria);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+}
+
+.checkbox-concluir {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.appointment-item::before {
+    content: "";
+
+    grid-column: 1;
+    grid-row: 1;
+
+    width: 14px;
+    height: 14px;
+    margin-top: 4px;
+
+    border: 2px solid var(--cor-principal);
+    border-radius: 4px;
+}
+
+.checkbox-concluir:checked ~ .appointment-text {
+    color: var(--cor-texto-secundario);
+    text-decoration: line-through;
+}
+
+.appointment-item:has(.checkbox-concluir:checked)::before {
+    background: var(--cor-principal);
+    box-shadow: inset 0 0 0 3px var(--cor-superficie-secundaria);
+}
+
+.appointment-text {
+    grid-column: 2;
+    overflow-wrap: anywhere;
+}
+
+.btn-concluir {
+    grid-column: 2;
+    justify-self: start;
+
+    padding: 5px 0;
+
+    color: var(--cor-principal);
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.btn-concluir:hover {
+    color: var(--cor-principal-hover);
+    text-decoration: underline;
+}
+
+.progress-tracker {
+    margin: 20px 0 0;
+    padding-top: 16px;
+
+    color: var(--cor-texto-secundario);
+    border-top: 1px solid var(--cor-borda);
+
+    font-size: 0.9rem;
+}
+
+
+/* ========================================
+   9. HOVER E ESTADOS DE FOCO
+   ======================================== */
+
+button,
+.botao-cabecalho,
+.botao-adicionar,
+.btn-assistant-send,
+.btn-concluir {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:active,
+.botao-adicionar:active,
+.botao-cabecalho:active {
+    transform: scale(0.98);
+}
+
+
+/* ========================================
+   10. RESPONSIVIDADE INICIAL
+   ======================================== */
+
+@media (max-width: 900px) {
+    #conteudo-principal {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    #secao-principal {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    #cabecalho {
+        width: calc(100% - 28px);
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .cabecalho-acoes {
+        gap: 8px;
+    }
+
+    .botao-cabecalho {
+        width: 42px;
+        height: 42px;
+        padding: 9px;
+    }
+
+    .botao-cabecalho .rotulo {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        padding: 0;
+        margin: -1px;
+
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .botao-cabecalho .icone {
+        width: 21px;
+        height: 21px;
+    }
+
+    #conteudo-principal {
+        width: calc(100% - 28px);
+        margin: 20px auto 32px;
+        gap: 16px;
+    }
+
+    #secao-principal,
+    #calendario,
+    #painel-compromissos-hoje {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    #secao-principal h1 {
+        font-size: 1.55rem;
+    }
+
+    .assistant-wrapper {
+        padding: 14px;
+    }
+
+    .calendario-topo {
+        align-items: stretch;
+    }
+
+    .botao-adicionar {
+        width: 100%;
+    }
+
+    .calendario-caixa {
+        padding: 8px 4px;
+    }
+
+    .calendario-grade {
+        border-spacing: 1px;
+    }
+
+    .calendario-grade th {
+        padding: 6px 0;
+        font-size: 0.65rem;
+    }
+
+    .calendario-grade td {
+        height: auto;
+        padding: 3px 0;
+    }
+
+    .dia {
+        width: min(100%, 36px);
+        font-size: 0.85rem;
+    }
+
+    .calendario-mes h3 {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* ========================================
+   11. MOVIMENTO REDUZIDO
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   12. SOBREPOSIÇÕES E JANELAS MODAIS
+   ======================================== */
+
+/* Checkboxes que controlam as janelas */
+.toggle-overlay {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Todas as janelas começam escondidas */
+.overlay {
+    display: none;
+}
+
+/* Menu, notificações e perfil */
+#toggle-menu:checked ~ #overlay-menu,
+#toggle-notificacoes:checked ~ #overlay-notificacoes,
+#toggle-perfil:checked ~ #overlay-perfil {
+    display: block;
+}
+
+/* Janelas centralizadas */
+#toggle-adicionar:checked ~ #overlay-adicionar-compromisso,
+#toggle-assistente:checked ~ #overlay-assistente,
+#toggle-editar-perfil:checked ~ #overlay-editar-perfil {
+    display: flex;
+}
+
+/* Fundo escuro e desfocado */
+#overlay-adicionar-compromisso,
+#overlay-assistente,
+#overlay-editar-perfil {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgb(16 3 13 / 35%);
+}
+
+/* Área clicável para fechar a janela */
+.overlay-fundo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    cursor: pointer;
+
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+/* Cartão que fica por cima do fundo */
+.overlay-caixa {
+    position: relative;
+    z-index: 1;
+
+    width: min(540px, 100%);
+    max-height: calc(100vh - 48px);
+
+    padding: 28px;
+
+    overflow-y: auto;
+
+    color: var(--cor-texto);
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 18px;
+
+    box-shadow: 0 20px 60px rgb(0 0 0 / 20%);
+}
+
+/* Cabeçalho da janela */
+.overlay-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 24px;
+}
+
+.overlay-topo h2 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+/* Ícone de editar */
+.icone-editar {
+    width: 24px;
+    height: 24px;
+}
+
+/* Botão de fechar */
+.botao-fechar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.botao-fechar img {
+    width: 18px;
+    height: 18px;
+}
+
+.botao-fechar:hover {
+    background: var(--cor-borda);
+}
+
+/* Campos dos formulários */
+.campo {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.campo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+
+    padding: 10px 4px;
+
+    color: var(--cor-texto);
+    background: transparent;
+
+    border: 0;
+    border-bottom: 1px dotted var(--cor-texto-secundario);
+    border-radius: 0;
+}
+
+.campo textarea {
+    width: 100%;
+    min-height: 110px;
+
+    padding: 14px;
+
+    color: var(--cor-texto);
+    background: #302435;
+
+    border: 0;
+    border-radius: 12px;
+
+    resize: vertical;
+}
+
+.campo textarea::placeholder {
+    color: #e0d4e3;
+}
+
+/* Botões de salvar e cancelar */
+.botao-salvar,
+.botao-cancelar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 10px 20px;
+
+    border: 0;
+    border-radius: var(--raio-botao);
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.botao-salvar {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+}
+
+.botao-salvar:hover {
+    background: var(--cor-principal-hover);
+}
+
+.botao-cancelar {
+    color: var(--cor-texto);
+    background: var(--cor-superficie-secundaria);
+    border: 1px solid var(--cor-borda);
+    text-decoration: none;
+}
+
+.botao-cancelar:hover {
+    background: var(--cor-borda);
+}
+
+/* Área das ações do editar perfil */
+.acoes-formulario {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 24px;
+}
+ 
+@media (max-width: 600px) {
+    #overlay-adicionar-compromisso,
+    #overlay-assistente,
+    #overlay-editar-perfil {
+        padding: 12px;
+    }
+
+    .overlay-caixa {
+        width: 100%;
+        max-height: calc(100dvh - 24px);
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .overlay-topo {
+        margin-bottom: 20px;
+    }
+
+    .overlay-topo h2 {
+        font-size: 1.15rem;
+    }
+
+    .acoes-formulario {
+        justify-content: stretch;
+    }
+
+    .acoes-formulario > * {
+        flex: 1;
+    }
+}
+ 
+
+/* ========================================
+   13. MENU, NOTIFICAÇÕES E PERFIL
+   ======================================== */
+
+/* Base comum das três caixas */
+#overlay-menu,
+#overlay-notificacoes,
+#overlay-perfil {
+    position: absolute;
+    z-index: 200;
+
+    width: min(320px, calc(100vw - 24px));
+    padding: 10px;
+
+    color: var(--cor-texto);
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 14px;
+
+    box-shadow: 0 12px 35px rgb(0 0 0 / 15%);
+}
+
+/* MENU PRINCIPAL */
+#overlay-menu {
+    top: 76px;
+    left: max(24px, calc((100vw - 1200px) / 2));
+}
+
+.overlay-nav ul {
+    display: grid;
+    gap: 0px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.overlay-nav a,
+.overlay-nav li > label {
+    display: block;
+    padding: 12px 14px;
+
+    color: var(--cor-texto);
+    text-decoration: none;
+
+    border-radius: 9px;
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.overlay-nav a:hover,
+.overlay-nav li > label:hover {
+    color: var(--cor-principal);
+    background: var(--cor-superficie-secundaria);
+}
+
+/* NOTIFICAÇÕES */
+#overlay-notificacoes {
+    top: 76px;
+    right: max(24px, calc((100vw - 1200px) / 2 + 100px));
+}
+
+.notifications-list {
+    display: grid;
+    gap: 8px;
+
+    margin: 12px 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.notification-item {
+    padding: 12px;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    background: var(--cor-superficie-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+
+    overflow-wrap: anywhere;
+}
+
+/* Botão para marcar notificações como lidas */
+.marcar-lidas {
+    width: 100%;
+    padding: 10px;
+
+    color: var(--cor-principal);
+    background: transparent;
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 9px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.marcar-lidas:hover {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+}
+
+/* PERFIL */
+#overlay-perfil {
+    top: 76px;
+    right: max(24px, calc((100vw - 1200px) / 2));
+}
+
+.perfil-caixa {
+    display: grid;
+    gap: 8px;
+}
+
+.perfil-saudacao {
+    margin: 0;
+    padding: 12px;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.perfil-opcao {
+    display: block;
+    padding: 11px 12px;
+
+    color: var(--cor-texto);
+    text-decoration: none;
+
+    border-radius: 9px;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.perfil-opcao:hover {
+    background: var(--cor-superficie-secundaria);
+}
+
+.perfil-sair {
+    color: #B74747;
+}
+
+/* Destacar os botões quando suas caixas estão abertas */
+#toggle-menu:checked ~ #cabecalho label[for="toggle-menu"],
+#toggle-notificacoes:checked ~ #cabecalho label[for="toggle-notificacoes"],
+#toggle-perfil:checked ~ #cabecalho label[for="toggle-perfil"] {
+    color: #FFFFFF;
+    background: var(--cor-principal);
+    border-color: var(--cor-principal);
+}
+
+/* ========================================
+   MENU, NOTIFICAÇÕES E PERFIL NO CELULAR
+   ======================================== */
+
+@media (max-width: 600px) {
+    #overlay-menu {
+        top: 70px;
+        left: 12px;
+        width: calc(100vw - 24px);
+    }
+
+    #overlay-notificacoes {
+        top: 70px;
+        right: 12px;
+        width: min(340px, calc(100vw - 24px));
+    }
+
+    #overlay-perfil {
+        top: 70px;
+        right: 12px;
+        width: min(300px, calc(100vw - 24px));
+    }
+}
+
+/* ========================================
+   14. JANELA EDITAR PERFIL
+   ======================================== */
+
+.caixa-editar-perfil {
+    width: min(560px, 100%);
+    padding: 30px;
+}
+
+/* Cabeçalho */
+.caixa-editar-perfil .overlay-topo {
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.caixa-editar-perfil .overlay-topo h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+/* Foto de perfil */
+.editar-perfil-foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    padding: 8px 0 24px;
+}
+
+.icone-foto {
+    width: 88px;
+    height: 88px;
+    padding: 18px;
+
+    object-fit: contain;
+
+    background: var(--cor-superficie-secundaria);
+    border: 2px solid var(--cor-borda);
+    border-radius: 50%;
+}
+
+.link-trocar-foto {
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
+
+.link-trocar-foto:hover {
+    color: var(--cor-principal-hover);
+    text-decoration: underline;
+}
+
+/* Nome e e-mail */
+.editar-perfil-dados {
+    display: grid;
+    gap: 16px;
+}
+
+.dado-perfil {
+    margin: 0;
+    padding: 12px 14px;
+
+    color: var(--cor-texto-secundario);
+    background: var(--cor-superficie-secundaria);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.dado-valor {
+    color: var(--cor-texto);
+    font-weight: 600;
+}
+
+/* Campos de edição */
+.caixa-editar-perfil .campo {
+    gap: 7px;
+    margin-bottom: 4px;
+}
+
+.caixa-editar-perfil .campo label {
+    color: var(--cor-texto);
+    font-size: 0.88rem;
+}
+
+.caixa-editar-perfil .campo input {
+    min-height: 44px;
+    padding: 10px 4px;
+
+    color: var(--cor-texto);
+    background: transparent;
+
+    border: 0;
+    border-bottom: 1px dotted var(--cor-texto-secundario);
+    border-radius: 0;
+
+    transition: border-color 0.2s ease;
+}
+
+.caixa-editar-perfil .campo input:focus {
+    border-bottom: 2px solid var(--cor-principal);
+    outline: none;
+}
+
+.caixa-editar-perfil .campo input::placeholder {
+    color: var(--cor-texto-secundario);
+    opacity: 0.8;
+}
+
+/* Botões inferiores */
+.caixa-editar-perfil .acoes-formulario {
+    justify-content: flex-end;
+    gap: 12px;
+
+    padding-top: 20px;
+    margin-top: 24px;
+
+    border-top: 1px solid var(--cor-borda);
+}
+
+.caixa-editar-perfil .botao-cancelar,
+.caixa-editar-perfil .botao-salvar {
+    min-width: 110px;
+    min-height: 44px;
+}
+
+/* Efeitos dos botões */
+.caixa-editar-perfil .botao-cancelar:hover {
+    color: var(--cor-texto);
+    background: var(--cor-borda);
+}
+
+.caixa-editar-perfil .botao-salvar:hover {
+    background: var(--cor-principal-hover);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .caixa-editar-perfil {
+        padding: 22px 18px;
+    }
+
+    .caixa-editar-perfil .overlay-topo h2 {
+        font-size: 1.25rem;
+    }
+
+    .icone-foto {
+        width: 76px;
+        height: 76px;
+        padding: 15px;
+    }
+
+    .caixa-editar-perfil .acoes-formulario {
+        gap: 8px;
+    }
+
+    .caixa-editar-perfil .botao-cancelar,
+    .caixa-editar-perfil .botao-salvar {
+        min-width: 0;
+        flex: 1;
+    }
+}
+
+/* Ajustes finais: janela Editar perfil */
+
+.caixa-editar-perfil {
+    box-sizing: border-box;
+    width: min(480px, calc(100% - 32px));
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 18px;
+}
+
+.caixa-editar-perfil .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.caixa-editar-perfil input,
+.caixa-editar-perfil select {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .caixa-editar-perfil {
+        width: calc(100% - 24px);
+        padding: 20px 16px;
+    }
+
+    .caixa-editar-perfil .acoes-formulario {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+/* =====================================
+   MODO ESCURO - STUDYFLOW
+   ===================================== */
+
+body:has(#toggle-tema:checked) {
+    --cor-fundo: #000000;
+    --cor-fundo-inicial: #10030D;
+    --cor-superficie: #1B111A;
+    --cor-superficie-secundaria: #261B25;
+    --cor-texto: #F5EDF4;
+    --cor-texto-secundario: #C0B2BE;
+    --cor-principal: #8B6B82;
+    --cor-principal-hover: #A4879B;
+    --cor-borda: #493B47;
+    --cor-sombra: rgb(0 0 0 / 30%);
+
+    color-scheme: dark;
+    color: var(--cor-texto);
+
+    background: linear-gradient(
+        115deg,
+        var(--cor-fundo-inicial),
+        var(--cor-fundo)
+    );
+}
+
+/* Painéis e janelas no modo escuro */
+body:has(#toggle-tema:checked) #secao-principal,
+body:has(#toggle-tema:checked) #calendario,
+body:has(#toggle-tema:checked) #painel-compromissos-hoje,
+body:has(#toggle-tema:checked) .overlay-caixa,
+body:has(#toggle-tema:checked) .perfil-caixa,
+body:has(#toggle-tema:checked) .assistant-wrapper {
+    color: var(--cor-texto);
+    background-color: var(--cor-superficie);
+    border-color: var(--cor-borda);
+}
+
+/* Textos secundários */
+body:has(#toggle-tema:checked) .welcome-text,
+body:has(#toggle-tema:checked) .appointment-text,
+body:has(#toggle-tema:checked) .progress-tracker {
+    color: var(--cor-texto-secundario);
+}
+
+/* Campos de formulário */
+body:has(#toggle-tema:checked) input,
+body:has(#toggle-tema:checked) select,
+body:has(#toggle-tema:checked) textarea {
+    color: var(--cor-texto);
+    color-scheme: dark;
+}
+
+/* Ícones do cabeçalho */
+body:has(#toggle-tema:checked) #cabecalho .icone {
+    filter: brightness(0) invert(1);
+}
+
+
+/* Título responsivo - StudyFlow */
+@media (max-width: 600px) {
+    #secao-principal h1 {
+        font-size: clamp(1.6rem, 6vw, 2rem);
+        text-align: center;
+    }
+
+    .welcome-text {
+        text-align: center;
+    }
+}
+
+/* ===================================
+   ASSISTENTE - VISUAL DO FIGMA
+   =================================== */
+
+.assistant-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 12px;
+
+    width: 100%;
+    max-width: 700px;
+    margin: 24px auto 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.assistant-wrapper > span,
+.assistant-wrapper > p {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.assistant-wrapper > span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.assistant-wrapper > p {
+    max-width: 460px;
+    margin: 0 auto 8px;
+}
+
+.assistant-wrapper input {
+    grid-column: 1;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding: 14px 20px;
+}
+
+.assistant-wrapper .btn-assistant-send {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+
+    min-width: 48px;
+    padding: 0 14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Ajuste definitivo da barra do assistente */
+
+.assistant-wrapper {
+    grid-template-columns: minmax(0, 1fr) 48px;
+    column-gap: 0;
+}
+
+.assistant-wrapper input {
+    grid-column: 1;
+    border-radius: 30px 0 0 30px;
+    border-right: none;
+}
+
+.assistant-wrapper .btn-assistant-send {
+    grid-column: 2;
+
+    box-sizing: border-box;
+    width: 48px;
+    height: auto;
+    min-height: 44px;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    color: var(--cor-principal);
+    background: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-left: none;
+    border-radius: 0 30px 30px 0;
+}
+
+.assistant-wrapper .btn-assistant-send:hover {
+    color: var(--cor-principal);
+    background: var(--cor-superficie-secundaria);
+}
+
+/* Calendário - ajuste visual conforme Figma */
+
+@media (min-width: 901px) {
+    .calendario-caixa {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 520px;
+        padding: 20px;
+        border-radius: 28px;
+    }
+
+    .calendario-grade td {
+        height: 58px;
+    }
+
+    .dia {
+        width: min(100%, 48px);
+        font-size: 1rem;
+    }
+}
+
+/* Ajuste do painel de compromissos conforme Figma */
+@media (min-width: 901px) {
+    #painel-compromissos-hoje {
+        height: auto;
+        min-height: 353px;
+        align-self: start;
+        border-radius: 35px;
+        margin-top: 35px;
+    }
+    
+}
+/* FUNDO ORIGINAL DO FIGMA */
+
+body {
+    background: linear-gradient(
+        0.52deg,
+        #A4C3C4 0.44%,
+        #EEEEEE 59.91%
+    );
+    background-attachment: fixed;
+}
+/* TÍTULO PRINCIPAL - FIGMA */
+
+#secao-principal h1 {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4E5554;
+}
+@media (max-width: 600px) {
+    #secao-principal h1 {
+        font-size: 28px;
+        line-height: 1.15;
+    }
+}
+/* DESCRIÇÃO PRINCIPAL - FIGMA */
+
+.welcome-text {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+}
+/* Ajuste da descrição principal */
+
+.welcome-text {
+    max-width: 686px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+}
+
+/* TEXTOS DO ASSISTENTE - FIGMA */
+
+.assistant-wrapper > span,
+.assistant-wrapper > p {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4E5554;
+}
+
+/* TEXTOS DO ASSISTENTE NO MODO ESCURO */
+
+body:has(#toggle-tema:checked) .assistant-wrapper > span,
+body:has(#toggle-tema:checked) .assistant-wrapper > p {
+    color: var(--cor-texto);
+}
+/* TÍTULOS DOS PAINÉIS - FIGMA */
+
+.calendario-topo h2,
+#painel-compromissos-hoje h2 {
+    color: #4E5554;
+}
+/* TÍTULO CALENDÁRIO - FIGMA */
+
+.calendario-topo h2 {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #4E5554;
+}
+@media (max-width: 600px) {
+    .calendario-topo h2 {
+        font-size: 20px;
+    }
+}
+/* BOTÃO ADICIONAR COMPROMISSO - FIGMA */
+
+.botao-adicionar {
+    background: #576C6D;
+    border-radius: 10px;
+    min-height: 31px;
+}
+
+/* CALENDÁRIO INTERNO - RECTANGLE 7 DO FIGMA */
+
+.calendario-caixa {
+    background: rgba(242, 241, 237, 0.8);
+
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+
+    box-shadow: -7px 11px 8.7px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+/* FUNDO DO CALENDÁRIO NO MODO ESCURO */
+
+body:has(#toggle-tema:checked) .calendario-caixa {
+    border: none;
+}
+
+/* BORDA DO CALENDÁRIO - FIGMA */
+
+#calendario {
+    border: 2px solid rgba(78, 85, 84, 0.3);
+    box-sizing: border-box;
+}
+
+
+/* TÍTULO COMPROMISSOS DE HOJE - FIGMA */
+
+#painel-compromissos-hoje h2 {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4E5554;
+}
+
+
+/* TEXTOS DOS COMPROMISSOS - FIGMA */
+
+#painel-compromissos-hoje .appointment-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+/* BOTÃO CONCLUIR - FIGMA */
+
+#painel-compromissos-hoje .appointment-text label {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+
+/* BOTÃO NOTIFICAÇÕES - FIGMA */
+
+#cabecalho label[for="toggle-notificacoes"] {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4E5554;
+}
+
+
+/* BOTÃO PERFIL - RECTANGLE 11 DO FIGMA */
+
+#cabecalho label[for="toggle-perfil"] {
+    width: 114px;
+    height: 49px;
+
+    border-radius: 35px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 248, 238, 0.5) 0%,
+        #EFF3E9 100%
+    );
+
+    box-shadow: -3px 4px 5.8px 0px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+}
+
+/* LOGO STUDYFLOW - FIGMA */
+
+#cabecalho .logo {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4E5554;
+
+    text-shadow: -4px 5px 4.7px rgba(0, 0, 0, 0.26);
+}
+
+
+/* NOTIFICAÇÕES IGUAL AO PERFIL */
+
+#cabecalho label[for="toggle-notificacoes"] {
+    height: 49px;
+    padding: 0 15px;
+    border-radius: 35px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 248, 238, 0.5) 0%,
+        #EFF3E9 100%
+    );
+
+    box-shadow: -3px 4px 5.8px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    box-sizing: border-box;
+}
+
+/* JANELA EDITAR PERFIL - FIGMA */
+
+#overlay-editar-perfil .caixa-editar-perfil {
+    width: 637px;
+    max-width: 100%;
+    min-height: 372px;
+    height: auto;
+
+    background: #FFF9F0;
+    border-radius: 40px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+}
+
+/* MENU LATERAL - FIGMA */
+
+#menu-lateral {
+    width: 175px;
+    background: #FFF9F0;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* LINKS DO MENU */
+
+#menu-lateral a,
+#menu-lateral label {
+    font-family: "Intel One Mono", monospace;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: #4E5554;
+}
+
+/* MENU LATERAL - FIGMA */
+
+#overlay-menu .overlay-nav {
+    width: 175px;
+    background: #FFF9F0;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#overlay-menu .overlay-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#overlay-menu .overlay-nav li {
+    margin: 0;
+    padding: 0;
+}
+
+#overlay-menu .overlay-nav a,
+#overlay-menu .overlay-nav label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 55px;
+    padding: 5px 8px;
+
+    font-family: "Intel One Mono", monospace;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    color: #4E5554;
+
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* DESTAQUE COMPROMISSOS DE HOJE */
+
+#overlay-menu .overlay-nav li:nth-child(2) a {
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+
+/* DESTAQUE AO PASSAR O MOUSE */
+
+#cabecalho .logo:hover,
+#overlay-menu .overlay-nav a:hover,
+#overlay-menu .overlay-nav label:hover {
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+/* STUDYFLOW COM MENU ABERTO */
+
+body:has(#toggle-menu:checked) #cabecalho .logo {
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+/* PERFIL COM MENU ABERTO */
+
+body:has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] {
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+/* REMOVER DESTAQUE FIXO DOS COMPROMISSOS */
+
+#overlay-menu .overlay-nav li:nth-child(2) a:not(:hover) {
+    background: transparent;
+    color: #4E5554;
+}
+
+/* REMOVER CAIXA BRANCA ATRÁS DO MENU */
+
+#overlay-menu {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+#overlay-menu .overlay-nav {
+    background: #FFF9F0;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* JANELA NOTIFICAÇÕES - FIGMA */
+
+#overlay-notificacoes {
+    width: 296px;
+    max-width: calc(100vw - 24px);
+    min-height: 257px;
+
+    background: #FFF9F0;
+    border-radius: 12px;
+
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* FAIXA VERDE SUPERIOR */
+
+#overlay-notificacoes .marcar-lidas {
+    display: block;
+    width: 100%;
+    min-height: 35px;
+
+    background: #576C6D;
+    color: #FFFFFF;
+
+    font-family: "Intel One Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+
+    border: none;
+    cursor: pointer;
+}
+
+/* LISTA DE NOTIFICAÇÕES */
+
+#overlay-notificacoes .notifications-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#overlay-notificacoes .notification-item {
+    padding: 12px 8px;
+
+    font-family: "Intel One Mono", monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    text-align: center;
+    color: #4E5554;
+}
+
+
+/* BARRA DO ASSISTENTE - FIGMA */
+
+.assistant-wrapper input {
+    width: 100%;
+    height: 35px;
+
+    font-family: "Intel One Mono", monospace;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0;
+
+    background: rgba(97, 118, 117, 0.7);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* TEXTO DE EXEMPLO */
+
+.assistant-wrapper input::placeholder {
+    font-family: "Intel One Mono", monospace;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+.assistant-wrapper {
+    width: 100%;
+    max-width: 661px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* BARRA DO ASSISTENTE - RECTANGLE 6 */
+
+.assistant-wrapper {
+    width: 100%;
+    max-width: 694px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CAMPO DE TEXTO */
+
+.assistant-wrapper input {
+    height: 44px;
+    background: #FFFFFF;
+
+    border: 1px solid rgba(87, 108, 109, 0.55);
+    border-radius: 35px;
+
+    box-shadow: 0 0 4.8px rgba(0, 0, 0, 0.7);
+
+    box-sizing: border-box;
+}
+
+/* BARRA DO ASSISTENTE - ESTILO FIGMA */
+
+.assistant-wrapper {
+    width: 100%;
+    max-width: 694px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* CAMPO DE PERGUNTA */
+
+.assistant-wrapper input {
+    width: 100%;
+    height: 44px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(87, 108, 109, 0.55);
+    border-radius: 35px;
+    box-shadow: 0 0 4.8px rgba(0, 0, 0, 0.7);
+
+    padding: 0 55px 0 20px;
+    box-sizing: border-box;
+}
+
+/* SETA DENTRO DA BARRA */
+
+.assistant-wrapper .btn-assistant-send {
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+/* BARRA DO ASSISTENTE - FIGMA */
+
+.assistant-wrapper {
+    width: 100%;
+    max-width: 694px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* CAMPO DE TEXTO */
+
+.assistant-wrapper input {
+    width: 100%;
+    height: 44px;
+    padding: 0 55px 0 20px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(87, 108, 109, 0.55);
+    border-radius: 35px;
+    box-shadow: 0 0 4.8px rgba(0, 0, 0, 0.7);
+
+    font-family: "Intel One Mono", monospace;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+/* TEXTO DE EXEMPLO */
+
+.assistant-wrapper input::placeholder {
+    color: rgba(97, 118, 117, 0.7);
+    text-align: center;
+}
+
+/* SETA DE ENVIO */
+
+.assistant-wrapper .btn-assistant-send {
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #617675;
+    cursor: pointer;
+}
+
+/* MENU SUSPENSO DO PERFIL - FIGMA */
+
+#overlay-perfil {
+    width: 218px;
+    min-height: 97px;
+    height: auto;
+
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+}
+
+/* MENU PERFIL - GROUP 15 DO FIGMA */
+
+#overlay-perfil {
+    width: 218px;
+    max-width: calc(100vw - 24px);
+    min-height: 97px;
+    height: auto;
+
+    padding: 0;
+    background: #FFF9F0;
+
+    border-radius: 12px;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+}
+
+/* CALENDÁRIO - CONTORNO DO FIGMA */
+
+#calendario {
+    background: #F2F3F0;
+    border: 2px solid #009DFF;
+    border-radius: 24px 24px 0 0;
+    box-sizing: border-box;
+}
+
+
+/* MÊS E ANO DO CALENDÁRIO - FIGMA */
+
+#calendario #mes-ano,
+.calendario-mes #mes-ano {
+    font-family: "Intel One Mono", monospace;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4E5554;
+}
+
+/* REMOVER BORDA AZUL DO CALENDÁRIO */
+
+#calendario {
+    border: none;
+}
+
+/* PAINEL COMPROMISSOS - ORGANIZAÇÃO FIGMA */
+
+#painel-compromissos-hoje {
+    display: flex;
+    flex-direction: column;
+    min-height: 353px;
+    padding: 20px 12px;
+    border-radius: 35px;
+    background: #F2F3F0;
+    box-sizing: border-box;
+}
+
+/* LISTA DE COMPROMISSOS */
+
+#painel-compromissos-hoje .appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* CADA COMPROMISSO */
+
+#painel-compromissos-hoje .appointment-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+}
+
+/* TEXTO DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointment-text {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    color: #4E5554;
+}
+
+/* BOTÃO CONCLUIR */
+
+#painel-compromissos-hoje .btn-concluir {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* PROGRESSO NA PARTE INFERIOR */
+
+#painel-compromissos-hoje .progress-tracker {
+    margin-top: auto;
+    padding-top: 18px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    color: #4E5554;
+}
+
+/* REMOVER ENQUADRAMENTO DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointment-item {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* ESCONDER O QUADRADINHO DO CHECKBOX */
+
+#painel-compromissos-hoje .checkbox-concluir {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* MANTER O BOTÃO CONCLUIR SEM ENQUADRAMENTO */
+
+#painel-compromissos-hoje .btn-concluir {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #4E5554;
+    cursor: pointer;
+}
+
+/* ESCONDER QUADRADINHO DOS COMPROMISSOS */
+
+#painel-compromissos-hoje input.checkbox-concluir {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    appearance: none;
+    pointer-events: none;
+}
+
+/* REMOVER ENQUADRAMENTO INTERNO DO CALENDÁRIO */
+
+.calendario-caixa {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ESCONDER CHECKBOX DOS COMPROMISSOS */
+
+#painel-compromissos-hoje input[type="checkbox"].checkbox-concluir {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    appearance: none !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+}
+
+/* ESCONDER OS QUADRADINHOS DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointments-list .appointment-item > input[type="checkbox"] {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    appearance: none !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+}
+
+
+/* REMOVER QUADRADINHOS DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointment-item::before {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* PAINEL COMPROMISSOS DE HOJE - FIGMA */
+
+#painel-compromissos-hoje {
+    width: 246px;
+    max-width: 100%;
+    min-height: 353px;
+    height: auto;
+
+    background: rgba(242, 241, 237, 0.8);
+    border-radius: 35px;
+    border: none;
+
+    box-shadow: -7px 11px 8.7px 0px rgba(0, 0, 0, 0.1);
+
+    box-sizing: border-box;
+}
+
+/* ESPAÇAMENTO DOS COMPROMISSOS - FIGMA */
+
+#painel-compromissos-hoje {
+    display: flex;
+    flex-direction: column;
+    min-height: 353px;
+    padding: 20px 12px;
+}
+
+/* DISTRIBUIR OS TRÊS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ESPAÇO ENTRE O TEXTO E CONCLUIR */
+
+#painel-compromissos-hoje .appointment-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* PROGRESSO NO FINAL DO PAINEL */
+
+#painel-compromissos-hoje .progress-tracker {
+    margin-top: auto;
+    padding-top: 25px;
+    text-align: center;
+}
+
+/* SETAS DO CALENDÁRIO - FIGMA */
+
+.calendario-mes .seta {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    color: #AEB9B8;
+    font-size: 20px;
+    font-weight: 400;
+
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.calendario-mes .seta:hover {
+    color: #576C6D;
+}
+
+/* FONTE DO CALENDÁRIO - FIGMA */
+
+.calendario-caixa {
+    font-family: "Intel One Mono", monospace;
+    color: #4E5554;
+}
+
+.calendario-mes #mes-ano {
+    font-family: "Intel One Mono", monospace;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* CALENDÁRIO - ESTRUTURA DO FIGMA */
+
+#calendario {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* CAIXA DOS DIAS DO CALENDÁRIO */
+
+#calendario .calendario-caixa {
+    background: rgba(242, 241, 237, 0.8);
+    border: none;
+    border-radius: 35px 35px 0 0;
+    box-shadow: -7px 11px 8.7px rgba(0, 0, 0, 0.1);
+}
+
+/* FONTE DO CALENDÁRIO - FIGMA */
+
+#calendario .calendario-caixa {
+    font-family: "Intel One Mono", monospace;
+    color: #4E5554;
+}
+
+/* MÊS E ANO */
+
+#calendario #mes-ano {
+    font-family: "Intel One Mono", monospace;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4E5554;
+}
+
+/* SETAS */
+
+#calendario .seta {
+    font-size: 24px;
+    color: #4E5554;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* NÚMEROS DOS DIAS - FIGMA */
+
+#calendario .dia {
+    font-family: "Intel One Mono", monospace;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    color: #4E5554;
+    text-align: center;
+}
+
+/* DIAS DA SEMANA - FIGMA */
+
+#calendario thead th {
+    font-family: "Intel One Mono", monospace;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #4E5554;
+}
+
+/* TÍTULO DO PAINEL */
+
+#painel-compromissos-hoje h2 {
+    font-family: "Intel One Mono", monospace;
+    font-size: 20px;
+    font-weight: 600;
+    color: #4E5554;
+    text-align: center;
+}
+
+/* TEXTOS DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointment-text {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #4E5554;
+    text-align: center;
+}
+
+/* BOTÕES CONCLUIR */
+
+#painel-compromissos-hoje .btn-concluir {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4E5554;
+    text-align: center;
+}
+
+/* TEXTO DO PROGRESSO */
+
+#painel-compromissos-hoje .progress-tracker {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4E5554;
+    text-align: center;
+}
+
+
+/* TÍTULO DO PAINEL */
+
+#painel-compromissos-hoje h2 {
+    font-family: "Intel One Mono", monospace;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    margin: 0 0 14px;
+}
+
+/* ESPAÇAMENTO DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* TEXTO DOS COMPROMISSOS */
+
+#painel-compromissos-hoje .appointment-text {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    color: #4E5554;
+}
+
+/* BOTÃO CONCLUIR */
+
+#painel-compromissos-hoje .btn-concluir {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #4E5554;
+}
+
+/* PROGRESSO */
+
+#painel-compromissos-hoje .progress-tracker {
+    margin-top: auto;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #4E5554;
+}
+
+
+
+/* POSIÇÃO DOS COMPROMISSOS - REFERÊNCIA */
+
+@media (min-width: 901px) {
+    #painel-compromissos-hoje {
+        position: relative;
+        top: 80px;
+    }
+}
+
+
+/* TÍTULO PRINCIPAL - FIGMA */
+
+#secao-principal h1 {
+    font-family: "Intel One Mono", monospace;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4E5554;
+
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* NOTIFICAÇÕES - ESTILO FIGMA */
+
+#overlay-notificacoes {
+    width: 296px;
+    height: 257px;
+    padding: 0;
+    overflow: hidden;
+
+    background: #FFF8EE;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+/* BOTÃO SUPERIOR */
+
+#overlay-notificacoes .marcar-lidas {
+    display: block;
+    width: 100%;
+    height: 35px;
+    margin: 0;
+
+    background: #576C6D;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0;
+
+    font-family: "Intel One Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* LISTA DE NOTIFICAÇÕES */
+
+#overlay-notificacoes .notifications-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    height: calc(100% - 35px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* REMOVER AS CAIXAS INDIVIDUAIS */
+
+#overlay-notificacoes .notification-item {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    margin: 0;
+    padding: 8px 10px;
+
+    font-family: "Intel One Mono", monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    color: #4E5554;
+}
+
+
+/* MENU PERFIL - FIGMA */
+
+
+#overlay-perfil {
+    width: 218px;
+    height: auto;
+    min-height: 97px;
+    padding: 0;
+
+    background: #FFF8EE;
+    border: none;
+    border-radius: 0;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+
+/* CENTRALIZAR AS OPÇÕES */
+
+#overlay-perfil > * {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* RETIRAR BORDAS INTERNAS */
+
+#overlay-perfil a,
+#overlay-perfil label,
+#overlay-perfil p {
+    border: none;
+    box-shadow: none;
+}
+
+
+/* EFEITO HOVER - MENU PERFIL */
+
+#overlay-perfil a:hover,
+#overlay-perfil label:hover,
+#overlay-perfil button:hover {
+    background-color: #576C6D;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* JANELA ADICIONAR COMPROMISSO - FIGMA */
+
+#overlay-adicionar-compromisso .overlay-caixa {
+    width: 637px;
+    max-width: 95vw;
+    min-height: 524px;
+    height: auto;
+    padding: 25px 30px;
+
+    background: #FFF8EE;
+    border-radius: 35px;
+    box-sizing: border-box;
+}
+
+/* TÍTULO */
+
+#overlay-adicionar-compromisso .overlay-topo h2 {
+    font-family: "Intel One Mono", monospace;
+    font-size: 34px;
+    font-weight: 700;
+    color: #4E5554;
+}
+
+/* FORMULÁRIO EM DUAS COLUNAS */
+
+#form-adicionar-compromisso {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 15px 40px;
+    align-items: start;
+}
+
+/* CAMPOS DA ESQUERDA */
+
+#form-adicionar-compromisso .campo {
+    grid-column: 1;
+    min-width: 0;
+}
+
+#form-adicionar-compromisso .campo label {
+    font-family: "Intel One Mono", monospace;
+    font-size: 16px;
+    color: #4E5554;
+}
+
+/* LINHAS DOS CAMPOS */
+
+#form-adicionar-compromisso .campo input,
+#form-adicionar-compromisso .campo select {
+    width: 100%;
+    border: none;
+    border-bottom: 1px dotted #4E5554;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #4E5554;
+}
+
+/* DESCRIÇÃO NA DIREITA */
+
+#form-adicionar-compromisso .campo-descricao {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+}
+
+#form-adicionar-compromisso #input-descricao {
+    width: 100%;
+    height: 260px;
+    padding: 15px;
+
+    background: #576C6D;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#form-adicionar-compromisso #input-descricao::placeholder {
+    color: #A4B5B4;
+}
+
+/* BOTÃO SALVAR */
+
+#form-adicionar-compromisso .botao-salvar {
+    grid-column: 2;
+    justify-self: end;
+
+    background: #576C6D;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+    #form-adicionar-compromisso {
+        grid-template-columns: 1fr;
+    }
+
+    #form-adicionar-compromisso .campo,
+    #form-adicionar-compromisso .campo-descricao,
+    #form-adicionar-compromisso .botao-salvar {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+/* EDITAR PERFIL - DIMENSÕES DO FIGMA */
+
+#overlay-editar-perfil .caixa-editar-perfil {
+    width: 637px;
+    max-width: 95vw;
+    min-height: 372px;
+    height: auto;
+    padding: 20px 35px;
+
+    background: #FFF8EE;
+    border-radius: 35px;
+    box-sizing: border-box;
+}
+
+/* TÍTULO CENTRALIZADO */
+
+#overlay-editar-perfil .overlay-topo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+#overlay-editar-perfil .overlay-topo h2 {
+    font-family: "Intel One Mono", monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: #4E5554;
+    text-align: center;
+}
+
+/* EDITAR PERFIL - LAYOUT FIGMA */
+
+#overlay-editar-perfil .caixa-editar-perfil {
+    width: 637px;
+    max-width: 95vw;
+    min-height: 372px;
+    height: auto;
+    padding: 20px 35px;
+    background: #FFF8EE;
+    border-radius: 35px;
+    box-sizing: border-box;
+}
+
+/* TÍTULO */
+
+#overlay-editar-perfil .overlay-topo {
+    border: none;
+    justify-content: center;
+}
+
+#overlay-editar-perfil .overlay-topo h2 {
+    font-family: "Intel One Mono", monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: #4E5554;
+    text-align: center;
+}
+
+/* FOTO À ESQUERDA E DADOS À DIREITA */
+
+#form-editar-perfil {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 30px;
+    row-gap: 15px;
+    align-items: center;
+}
+
+/* FOTO */
+
+#form-editar-perfil .editar-perfil-foto {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#form-editar-perfil .icone-foto {
+    width: 150px;
+    height: 150px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    object-fit: contain;
+}
+
+#form-editar-perfil .link-trocar-foto {
+    font-family: "Intel One Mono", monospace;
+    font-size: 13px;
+    color: #576C6D;
+    text-decoration: underline;
+}
+
+/* DADOS */
+
+#form-editar-perfil .editar-perfil-dados {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#form-editar-perfil .dado-perfil {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 13px;
+}
+
+/* CAMPOS NA MESMA LINHA */
+
+#form-editar-perfil .campo-linha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#form-editar-perfil .campo-linha label {
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+#form-editar-perfil .campo-linha input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px;
+    background: #D1D8D4;
+    border: none;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+/* BOTÕES INFERIORES */
+
+#form-editar-perfil .acoes-formulario {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+    border: none;
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+    #form-editar-perfil {
+        grid-template-columns: 1fr;
+    }
+
+    #form-editar-perfil .editar-perfil-foto,
+    #form-editar-perfil .editar-perfil-dados,
+    #form-editar-perfil .acoes-formulario {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    #overlay-editar-perfil .overlay-topo h2 {
+        font-size: 26px;
+    }
+}
+
+/* STUDYFLOW - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #cabecalho .logo {
+    color: #E3C3DC;
+    text-shadow: -7px 5px 8.3px rgba(233, 219, 232, 0.32);
+}
+
+/* NOTIFICAÇÕES - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #cabecalho label[for="toggle-notificacoes"] .rotulo {
+    color: #E9DBE8;
+}
+
+
+/* PERFIL - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #cabecalho label[for="toggle-perfil"] .rotulo {
+    color: #E9DBE8;
+}
+
+/* BOAS-VINDAS - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #secao-principal h1,
+body:has(#toggle-tema:checked) .welcome-text {
+    color: #E9DBE8;
+}
+
+
+/* TEXTOS DO ASSISTENTE - MODO ESCURO */
+
+body:has(#toggle-tema:checked) .assistant-wrapper > span,
+body:has(#toggle-tema:checked) .assistant-wrapper > p {
+    color: #E9DBE8;
+}
+
+
+/* BARRA DO ASSISTENTE - MODO ESCURO */
+
+body:has(#toggle-tema:checked) .assistant-wrapper {
+    border: 1px solid rgba(116, 97, 118, 0.55);
+}
+
+/* TÍTULO CALENDÁRIO - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #calendario h2 {
+    color: #E9DBE8;
+}
+
+/* CAIXA DO CALENDÁRIO - MODO ESCURO */
+
+body:has(#toggle-tema:checked) .calendario-caixa {
+    background: rgba(242, 241, 237, 0.1);
+    box-shadow: -7px 11px 8.7px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* CALENDÁRIO - BORDAS E LETRAS NO MODO ESCURO */
+
+body:has(#toggle-tema:checked) .calendario-caixa {
+    border: 2px solid rgba(233, 219, 232, 0.3);
+}
+
+body:has(#toggle-tema:checked) .calendario-caixa,
+body:has(#toggle-tema:checked) .calendario-mes,
+body:has(#toggle-tema:checked) #mes-ano,
+body:has(#toggle-tema:checked) #calendario thead th,
+body:has(#toggle-tema:checked) #calendario .dia {
+    color: #E9DBE8;
+}
+
+
+/* FUNDO DA PÁGINA - MODO ESCURO */
+
+body:has(#toggle-tema:checked) {
+    background: linear-gradient(
+        0.52deg,
+        #10030D 0.44%,
+        #000000 99.56%
+    );
+    min-height: 100vh;
+}
+
+/* BOTÃO ADICIONAR COMPROMISSO - MODO ESCURO */
+
+body:has(#toggle-tema:checked) label[for="toggle-adicionar"] {
+    background: rgba(13, 13, 13, 0.18);
+    color: #FFFFFF;
+    padding: 14px 18px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* CAIXA DO MENU - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-menu .overlay-caixa {
+    border: 2px solid rgba(233, 219, 232, 0.3);
+    border-radius: 20px;
+}
+
+/* COMPROMISSOS DE HOJE - TEXTOS NO MODO ESCURO */
+
+body:has(#toggle-tema:checked) #painel-compromissos-hoje,
+body:has(#toggle-tema:checked) #painel-compromissos-hoje * {
+    color: #F2F1ED;
+}
+
+/* TÍTULO COMPROMISSOS DE HOJE - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #painel-compromissos-hoje h2 {
+    color: #E9DBE8;
+}
+
+/* TÍTULO COMPROMISSOS DE HOJE - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #painel-compromissos-hoje h2 {
+    color: #E9DBE8;
+}
+
+/* COMPROMISSOS DE HOJE - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #painel-compromissos-hoje {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+/* TÍTULO FORA DA CAIXA */
+body:has(#toggle-tema:checked) #painel-compromissos-hoje h2 {
+    color: #E9DBE8;
+    margin-bottom: 15px;
+}
+
+/* CAIXA ARREDONDADA DOS COMPROMISSOS */
+body:has(#toggle-tema:checked) #painel-compromissos-hoje .appointments-list {
+    background: #241C23;
+    border-radius: 35px 35px 0 0;
+    padding: 20px;
+}
+
+/* COMPROMISSOS DE HOJE - MODO CLARO */
+
+body:not(:has(#toggle-tema:checked)) #painel-compromissos-hoje {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+/* TÍTULO FORA DA CAIXA */
+body:not(:has(#toggle-tema:checked)) #painel-compromissos-hoje h2 {
+    color: #342B33;
+    margin-bottom: 15px;
+}
+
+/* CAIXA DOS COMPROMISSOS */
+body:not(:has(#toggle-tema:checked)) #painel-compromissos-hoje .appointments-list {
+    background: #F2F1ED;
+    border-radius: 35px 35px 0 0;
+    padding: 20px;
+}
+
+/* CAIXA DOS COMPROMISSOS */
+#painel-compromissos-hoje .appointments-list {
+    border-radius: 35px 35px 0 0;
+    padding-bottom: 10px;
+}
+
+/* PROGRESSO JUNTO DA CAIXA */
+#painel-compromissos-hoje .progress-tracker {
+    background: #F2F1ED;
+    color: #342B33;
+    margin-top: 0;
+    padding: 15px 20px 20px;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+}
+
+/* PROGRESSO - MODO ESCURO */
+body:has(#toggle-tema:checked) #painel-compromissos-hoje .progress-tracker {
+    background: #241C23;
+    color: #F2F1ED;
+}
+
+/* CALENDÁRIO - ESTRUTURA NO MODO ESCURO */
+
+/* REMOVE A CAIXA EXTERNA */
+body:has(#toggle-tema:checked) #calendario {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* TÍTULO CALENDÁRIO */
+body:has(#toggle-tema:checked) #calendario h2 {
+    color: #E9DBE8;
+}
+
+/* MANTÉM A CAIXA APENAS NAS DATAS */
+body:has(#toggle-tema:checked) .calendario-caixa {
+    background: rgba(242, 241, 237, 0.1);
+    border: 2px solid rgba(233, 219, 232, 0.3);
+    border-radius: 25px;
+    box-shadow: -7px 11px 8.7px rgba(0, 0, 0, 0.1);
+}
+
+/* ESPAÇAMENTO IGUAL NOS DOIS MODOS */
+
+/* ÁREA DO CALENDÁRIO */
+#calendario {
+    padding: 0;
+    margin: 0;
+}
+
+/* TÍTULO DO CALENDÁRIO */
+#calendario h2 {
+    margin-bottom: 15px;
+}
+
+/* CAIXA COM AS DATAS */
+.calendario-caixa {
+    margin-top: 15px;
+    padding: 20px;
+}
+
+/* ÁREA DOS COMPROMISSOS */
+#painel-compromissos-hoje {
+    margin-top: 25px;
+}
+
+/* TÍTULO DOS COMPROMISSOS */
+#painel-compromissos-hoje h2 {
+    margin-bottom: 15px;
+}
+
+/* ESPAÇAMENTO ENTRE COMPROMISSOS */
+#painel-compromissos-hoje .appointment-item {
+    margin-bottom: 15px;
+}
+
+/* HOVER DAS OPÇÕES DOS MENUS - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-menu a:hover,
+body:has(#toggle-tema:checked) #overlay-menu label:hover,
+body:has(#toggle-tema:checked) #overlay-perfil a:hover,
+body:has(#toggle-tema:checked) #overlay-perfil label:hover,
+body:has(#toggle-tema:checked) #overlay-perfil button:hover,
+body:has(#toggle-tema:checked) #overlay-notificacoes .notification-item:hover,
+body:has(#toggle-tema:checked) #overlay-notificacoes button:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* OPÇÃO ADICIONAR COMPROMISSO NO MENU STUDYFLOW */
+
+body:has(#toggle-tema:checked) #overlay-menu label[for="toggle-adicionar"] {
+    background: transparent;
+}
+
+/* DEGRADÊ AO PASSAR O MOUSE */
+body:has(#toggle-tema:checked) #overlay-menu label[for="toggle-adicionar"]:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+}
+
+/* COR DO TEXTO - ADICIONAR COMPROMISSO NO MENU */
+
+body:has(#toggle-tema:checked) #overlay-menu label[for="toggle-adicionar"] {
+    background: transparent;
+    color: #E9DBE8;
+    opacity: 1;
+}
+
+/* AO PASSAR O MOUSE */
+body:has(#toggle-tema:checked) #overlay-menu label[for="toggle-adicionar"]:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+    color: #FFFFFF;
+}
+
+/* TEXTOS DAS OPÇÕES DO STUDYFLOW - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-menu a,
+body:has(#toggle-tema:checked) #overlay-menu label,
+body:has(#toggle-tema:checked) #overlay-menu button {
+    color: #E9DBE8;
+    opacity: 1;
+}
+
+/* MANTER A COR AO PASSAR O MOUSE */
+
+body:has(#toggle-tema:checked) #overlay-menu a:hover,
+body:has(#toggle-tema:checked) #overlay-menu label:hover,
+body:has(#toggle-tema:checked) #overlay-menu button:hover {
+    color: #E9DBE8;
+}
+
+/* OPÇÕES DO STUDYFLOW - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-menu a,
+body:has(#toggle-tema:checked) #overlay-menu label,
+body:has(#toggle-tema:checked) #overlay-menu button {
+    background: #161316;
+    color: #E9DBE8;
+    opacity: 1;
+}
+
+/* DEGRADÊ AO PASSAR O MOUSE */
+
+body:has(#toggle-tema:checked) #overlay-menu a:hover,
+body:has(#toggle-tema:checked) #overlay-menu label:hover,
+body:has(#toggle-tema:checked) #overlay-menu button:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+    color: #E9DBE8;
+}
+
+/* OPÇÕES DO MENU STUDYFLOW - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-menu a,
+body:has(#toggle-tema:checked) #overlay-menu label,
+body:has(#toggle-tema:checked) #overlay-menu button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 8px;
+    margin: 0;
+    background: #161316;
+    color: #E9DBE8;
+    border-radius: 0;
+    text-align: center;
+}
+
+/* FUNDO AO PASSAR O MOUSE */
+
+body:has(#toggle-tema:checked) #overlay-menu a:hover,
+body:has(#toggle-tema:checked) #overlay-menu label:hover,
+body:has(#toggle-tema:checked) #overlay-menu button:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+    color: #E9DBE8;
+}
+
+/* CORRIGIR ADICIONAR COMPROMISSO NO MENU */
+
+body:has(#toggle-tema:checked) #overlay-menu label[for="toggle-adicionar"] {
+    background: #161316;
+    color: #E9DBE8;
+    -webkit-text-fill-color: #E9DBE8;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    opacity: 1;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+
+body:has(#toggle-tema:checked) #overlay-menu label[for="toggle-adicionar"]:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+    color: #E9DBE8;
+}
+
+/* OPÇÃO INÍCIO - MENU STUDYFLOW */
+
+#overlay-menu a:first-of-type {
+    width: 175px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Intel One Mono", monospace;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* INÍCIO - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-menu a:first-of-type {
+    background: #161316;
+    color: #E9DBE8;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+
+/* REMOVER LINHAS ENTRE AS OPÇÕES DO STUDYFLOW */
+
+#overlay-menu a,
+#overlay-menu label,
+#overlay-menu button {
+    border: none;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: none;
+    outline: none;
+}
+
+body:has(#toggle-tema:checked) #overlay-menu a:first-of-type:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+}
+
+/* REMOVER LINHAS DO MENU STUDYFLOW */
+
+#overlay-menu a,
+#overlay-menu label,
+#overlay-menu button {
+    border: none;
+    box-shadow: none;
+}
+
+/* GROUP 11 - BOTÃO ADICIONAR COMPROMISSO */
+
+body:has(#toggle-tema:checked) #calendario label[for="toggle-adicionar"] {
+    background: rgba(233, 219, 232, 1);
+    color: #161316;
+}
+
+/* ASSISTENTE - MODO ESCURO */
+
+body:has(#toggle-tema:checked) .assistant-wrapper {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* TEXTOS DO ASSISTENTE */
+
+body:has(#toggle-tema:checked) .assistant-wrapper > span,
+body:has(#toggle-tema:checked) .assistant-wrapper > p {
+    color: #E9DBE8;
+}
+
+/* ASSISTENTE - CORREÇÃO DO MODO ESCURO */
+
+/* REMOVE O FUNDO BRANCO DA ÁREA EXTERNA */
+body:has(#toggle-tema:checked) .assistant-wrapper {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* TEXTOS */
+body:has(#toggle-tema:checked) .assistant-wrapper > span,
+body:has(#toggle-tema:checked) .assistant-wrapper > p {
+    color: #E9DBE8;
+}
+
+/* BARRA ONDE DIGITAMOS A PERGUNTA */
+body:has(#toggle-tema:checked) .assistant-wrapper input {
+    background: transparent;
+    color: #E9DBE8;
+    border: 1px solid rgba(116, 97, 118, 0.55);
+    border-radius: 25px;
+    box-shadow: 0 0 4.8px rgba(0, 0, 0, 0.7);
+}
+
+/* TEXTO DE EXEMPLO */
+body:has(#toggle-tema:checked) .assistant-wrapper input::placeholder {
+    color: #E9DBE8;
+}
+
+/* SEÇÃO DE BOAS-VINDAS - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #secao-principal {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 35px 0 20px;
+}
+
+/* ÁREA DO ASSISTENTE */
+body:has(#toggle-tema:checked) .assistant-wrapper {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* TÍTULO DE BOAS-VINDAS */
+
+body:has(#toggle-tema:checked) #secao-principal h1 {
+    max-width: 550px;
+    margin: 0 auto 12px;
+    text-align: center;
+    line-height: 1.25;
+    color: #E9DBE8;
+}
+
+/* DESCRIÇÃO */
+
+body:has(#toggle-tema:checked) .welcome-text {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    text-align: center;
+    color: #E9DBE8;
+}
+
+/* BARRA DE PERGUNTAS */
+
+body:has(#toggle-tema:checked) .assistant-wrapper input {
+    background: transparent;
+    border: 1px solid rgba(116, 97, 118, 0.55);
+    border-radius: 25px;
+    color: #E9DBE8;
+}
+
+body:has(#toggle-tema:checked) #calendario .calendario-caixa {
+    border: none;
+}
+/* FUNDO DO CALENDÁRIO - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #calendario .calendario-caixa {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+    border: none;
+}
+/* ÁREA INICIAL PERFIL - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #secao-principal {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+}
+
+/* ÁREA INICIAL - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #secao-principal {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+}
+
+/* NOTIFICAÇÕES - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-notificacoes {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+}
+
+/* FUNDO DA JANELA DE NOTIFICAÇÕES - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-notificacoes,
+body:has(#toggle-tema:checked) #overlay-notificacoes .overlay-caixa {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    ) !important;
+}
+
+/* BOTÕES NOTIFICAÇÕES E PERFIL - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #cabecalho label[for="toggle-notificacoes"],
+body:has(#toggle-tema:checked) #cabecalho label[for="toggle-perfil"] {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+
+    color: #E9DBE8;
+    border-radius: 30px;
+}
+
+/* MENU NOTIFICAÇÕES - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-notificacoes {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+    color: #E9DBE8;
+}
+
+/* TEXTOS DAS NOTIFICAÇÕES */
+
+body:has(#toggle-tema:checked) #overlay-notificacoes .notification-item {
+    background: transparent;
+    color: #E9DBE8;
+}
+
+/* BOTÃO MARCAR TODAS COMO LIDAS */
+
+body:has(#toggle-tema:checked) #overlay-notificacoes .marcar-lidas {
+    background: #40313C;
+    color: #E9DBE8;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+
+body:has(#toggle-tema:checked) #overlay-notificacoes .notification-item:hover,
+body:has(#toggle-tema:checked) #overlay-notificacoes .marcar-lidas:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+}
+
+/* MENU PERFIL - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-perfil {
+    background: linear-gradient(
+        180deg,
+        #161316 0%,
+        #1D151C 100%
+    );
+    color: #E9DBE8;
+}
+
+/* OPÇÕES DO PERFIL */
+
+body:has(#toggle-tema:checked) #overlay-perfil a,
+body:has(#toggle-tema:checked) #overlay-perfil label,
+body:has(#toggle-tema:checked) #overlay-perfil button {
+    background: transparent;
+    color: #E9DBE8;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+
+body:has(#toggle-tema:checked) #overlay-perfil a:hover,
+body:has(#toggle-tema:checked) #overlay-perfil label:hover,
+body:has(#toggle-tema:checked) #overlay-perfil button:hover {
+    background: linear-gradient(
+        275.36deg,
+        #40313C 0.22%,
+        #8B6B82 99.78%
+    );
+    color: #E9DBE8;
+}
+
+/* NOTIFICAÇÕES - HOVER MODO CLARO */
+
+body:not(:has(#toggle-tema:checked)) #overlay-notificacoes .notification-item:hover {
+    background: var(--cor-principal);
+    color: var(--cor-texto);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* BOTÕES ATIVOS - MODO CLARO */
+
+/* NOTIFICAÇÕES ABERTAS */
+body:not(:has(#toggle-tema:checked)):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"],
+
+/* PERFIL ABERTO */
+body:not(:has(#toggle-tema:checked)):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] {
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+/* NOTIFICAÇÕES - HOVER MODO CLARO */
+
+body:not(:has(#toggle-tema:checked))
+#overlay-notificacoes .notification-item:hover {
+    background: rgba(87, 108, 109, 1);
+    color: #FFFFFF;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* TEXTOS INTERNOS */
+
+body:not(:has(#toggle-tema:checked))
+#overlay-notificacoes .notification-item:hover * {
+    color: #FFFFFF;
+}
+
+/* FUNDO DOS MENUS - MODO CLARO */
+
+body:not(:has(#toggle-tema:checked)) #overlay-notificacoes,
+body:not(:has(#toggle-tema:checked)) #overlay-perfil {
+    background: rgba(255, 248, 238, 1);
+}
+
+/* STUDYFLOW - OPÇÕES COM CANTOS RETOS */
+
+#overlay-menu .overlay-nav a,
+#overlay-menu .overlay-nav label,
+#overlay-menu .overlay-nav button,
+#overlay-menu .overlay-nav li {
+    border-radius: 0 !important;
+}
+
+/* REMOVER ARREDONDAMENTO NO HOVER */
+
+#overlay-menu .overlay-nav a:hover,
+#overlay-menu .overlay-nav label:hover,
+#overlay-menu .overlay-nav button:hover,
+#overlay-menu .overlay-nav li:hover {
+    border-radius: 0 !important;
+}
+
+/* CORRIGIR POSIÇÃO DA SETA - CLARO E ESCURO */
+
+.assistant-wrapper {
+    position: relative;
+}
+
+.assistant-wrapper .btn-assistant-send {
+    position: absolute;
+    right: 15px;
+    top: auto;
+    bottom: 5px;
+    transform: none;
+    z-index: 2;
+}
+
+/* FUNDO DESKTOP - MODO ESCURO */
+
+body:has(#toggle-tema:checked) {
+    background: linear-gradient(
+        0.52deg,
+        #10030D 0.44%,
+        #000000 99.56%
+    );
+    min-height: 100vh;
+}
+
+/* ADICIONAR COMPROMISSO - MODO ESCURO */
+
+/* FUNDO DA JANELA */
+body:has(#toggle-tema:checked)
+#overlay-adicionar-compromisso .overlay-caixa {
+    background: background; linear-gradient(
+    0.52deg,
+    #10030D 0.44%,
+    #000000 99.56%
+);
+}
+
+/* TEXTOS DOS CAMPOS */
+body:has(#toggle-tema:checked)
+#form-adicionar-compromisso .campo label {
+    color: #E9DBE8;
+}
+
+/* DATA, HORÁRIO E CATEGORIA */
+body:has(#toggle-tema:checked)
+#form-adicionar-compromisso .campo input,
+body:has(#toggle-tema:checked)
+#form-adicionar-compromisso .campo select {
+    background: transparent;
+    color: #E9DBE8;
+    border: none;
+    border-bottom: 1px dotted #E9DBE8;
+}
+
+/* CAIXA DE DESCRIÇÃO */
+body:has(#toggle-tema:checked)
+#form-adicionar-compromisso #input-descricao {
+    background: #161316;
+    color: #E9DBE8;
+    border: none;
+    border-radius: 20px;
+}
+
+/* TEXTO DE EXEMPLO */
+body:has(#toggle-tema:checked)
+#form-adicionar-compromisso #input-descricao::placeholder {
+    color: #746176;
+}
+
+/* BOTÃO SALVAR */
+body:has(#toggle-tema:checked)
+#form-adicionar-compromisso .botao-salvar {
+    background: #8B6B82;
+    color: #FFFFFF;
+    border-radius: 12px;
+}
+
+/* TESTE - FUNDO ADICIONAR COMPROMISSO NO MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-adicionar-compromisso .overlay-caixa {
+    background: linear-gradient(
+        0.52deg,
+        #10030D 0.44%,
+        #000000 99.56%
+    ) !important;
+}
+/* FUNDO ATRÁS DA JANELA - MODO ESCURO */
+
+body:has(#toggle-tema:checked) #overlay-adicionar-compromisso {
+    background: linear-gradient(
+        0.52deg,
+        #10030D 0.44%,
+        #000000 99.56%
+    ) !important;
+}
+/* OCULTAR CAMPO REPETIR NOS DOIS MODOS */
+
+#form-adicionar-compromisso .campo:has(#input-repetir) {
+    display: none !important;
+}
+
+/* REMOVER LINHA ACIMA DO PROGRESSO - AMBOS OS MODOS */
+
+#painel-compromissos-hoje .progress-tracker {
+    border-top: none !important;
+}
+
+
+/* EDITAR PERFIL - MODO ESCURO */
+
+/* TÍTULO EDITAR PERFIL */
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil .overlay-topo h2 {
+    color: #E9DBE8 !important;
+}
+
+/* ÍCONE DO USUÁRIO */
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil .icone-foto {
+    color: #E9DBE8 !important;
+}
+
+/* SE O ÍCONE FOR SVG */
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil .icone-foto svg {
+    fill: #E9DBE8;
+    stroke: #E9DBE8;
+}
+
+/* LINK TROCAR FOTO DE PERFIL */
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil .link-trocar-foto {
+    color: #E9DBE8 !important;
+}
+
+/* EDITAR PERFIL - TEXTO DOS INPUTS NO MODO ESCURO */
+
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil input {
+    color: #E9DBE8;
+}
+
+/* TEXTO INSERIR NOVO NOME E NOVA SENHA */
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil input::placeholder {
+    color: #E9DBE8 !important;
+    opacity: 1;
+}
+
+/* CAMPOS EDITAR PERFIL - MODO ESCURO */
+
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil input {
+    background: #302830 !important;
+    color: #E9DBE8;
+    border: none;
+    border-radius: 12px;
+}
+
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil input::placeholder {
+    color: #8B7889;
+    opacity: 1;
+}
+
+/* ÍCONE DE PERFIL - MODO ESCURO */
+
+body:has(#toggle-tema:checked)
+#overlay-editar-perfil img.icone-foto {
+    filter: brightness(0) saturate(100%)
+            invert(90%) sepia(8%)
+            saturate(330%) hue-rotate(267deg)
+            brightness(102%);
+}
+
+/* SETA DE ENVIAR - MODO ESCURO */
+
+body:has(#toggle-tema:checked) .btn-assistant-send {
+    color: #E9DBE8;
+}
+
+body:has(#toggle-tema:checked) .btn-assistant-send svg {
+    fill: #E9DBE8;
+    stroke: #E9DBE8;
+}
+
+/* NOTIFICAÇÕES - LARGURA TOTAL NO CELULAR */
+
+@media (max-width: 600px) {
+    #overlay-notificacoes {
+        width: 100vw !important;
+        max-width: none !important;
+        left: 0 !important;
+        right: 0 !important;
+        box-sizing: border-box;
+    }
+}
+
+/* ===== LOGIN STUDYFLOW ===== */
+
+/* FUNDO DA PÁGINA */
+body.pagina-login {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(
+        180deg,
+        #EEEEEE 0%,
+        #EEEEEE 40%,
+        #A4C3C4 100%
+    );
+    font-family: "Intel One Mono", monospace;
+}
+
+/* LOGO SUPERIOR */
+#cabecalho-login {
+    padding: 20px 35px;
+    color: #4E5554;
+}
+
+/* CAIXA CENTRAL DO LOGIN */
+#conteudo-login {
+    width: 90%;
+    max-width: 430px;
+    margin: 100px auto 40px;
+    padding: 30px 45px 40px;
+
+    background: #FFF8EE;
+    border-radius: 28px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.30);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* TÍTULO */
+#conteudo-login h1,
+#conteudo-login h2 {
+    color: #4E5554;
+    font-family: "Intel One Mono", monospace;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+
+/* ÍCONE DO USUÁRIO */
+#conteudo-login img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: -10px 0 35px;
+}
+
+/* CAMPOS EMAIL E SENHA */
+#conteudo-login input:not([type="checkbox"]) {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    margin-bottom: 15px;
+
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #D2D4CF;
+    border-radius: 0;
+    box-shadow: none;
+
+    color: #4E5554;
+    font-family: "Intel One Mono", monospace;
+    box-sizing: border-box;
+}
+
+/* BOTÃO ENTRAR */
+#conteudo-login button {
+    width: 140px;
+    padding: 12px 20px;
+    margin-top: 12px;
+
+    background: #576C6D;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+
+    font-family: "Intel One Mono", monospace;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* VERSÃO CELULAR */
+@media (max-width: 600px) {
+    #cabecalho-login {
+        padding: 20px;
+    }
+
+    #conteudo-login {
+        width: calc(100% - 32px);
+        max-width: 430px;
+        margin: 70px auto 30px;
+        padding: 30px 25px;
+    }
+
+    #conteudo-login h1,
+    #conteudo-login h2 {
+        font-size: 20px;
+    }
+
+    #conteudo-login img {
+        width: 85px;
+        height: 85px;
+    }
+}
+
+/* ORGANIZAR LOGIN */
+
+#conteudo-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TÍTULO EM CIMA */
+#conteudo-login h1,
+#conteudo-login h2 {
+    order: 1;
+    margin-bottom: 20px;
+}
+
+/* ÍCONE ABAIXO DO TÍTULO */
+#conteudo-login img {
+    order: 2;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 25px;
+}
+
+/* ORGANIZAÇÃO DO LOGIN - PC E CELULAR */
+
+#caixa-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TÍTULO EM PRIMEIRO */
+#caixa-login .titulo-login {
+    order: 1;
+    text-align: center;
+    margin: 0 0 20px;
+    color: #4E5554;
+}
+
+/* ÍCONE EM SEGUNDO */
+#caixa-login .icone-login {
+    order: 2;
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 0 auto 25px;
+    filter: brightness(0) saturate(100%)
+            invert(39%) sepia(11%)
+            saturate(595%) hue-rotate(134deg);
+}
+
+/* FORMULÁRIO EM TERCEIRO */
+#caixa-login #form-login {
+    order: 3;
+    width: 100%;
+    max-width: 310px;
+}
+
+
+/* EMAIL E SENHA - IGUAL AO FIGMA */
+
+#caixa-login #form-login {
+    width: 100%;
+    max-width: 310px;
+    text-align: left;
+}
+
+/* ORGANIZAÇÃO DOS CAMPOS */
+#form-login .campo {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 15px;
+}
+
+/* TEXTO EMAIL E SENHA */
+#form-login .campo label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: "Intel One Mono", monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #9AA5A2;
+    margin: 0;
+    padding: 0;
+}
+
+/* LINHAS DOS CAMPOS */
+#form-login .campo input {
+    width: 100%;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #D2D4CF;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+/* BOTÃO CENTRALIZADO */
+#form-login .botao-entrar {
+    display: block;
+    margin: 20px auto 0;
+}
+
+/* LOGIN - EMAIL E SENHA NO MODO ESCURO */
+
+body:has(#toggle-tema:checked) #form-login .campo {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 15px;
+}
+
+/* TEXTOS EMAIL E SENHA */
+body:has(#toggle-tema:checked) #form-login .campo label {
+    display: block;
+    text-align: left;
+    font-family: "Intel One Mono", monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #E9DBE8;
+    margin: 0;
+    padding: 0;
+}
+
+/* LINHAS DOS CAMPOS */
+body:has(#toggle-tema:checked) #form-login .campo input {
+    width: 100%;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: #E9DBE8;
+    border: none;
+    border-bottom: 1px solid #8B6B82;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+/* BOTÃO ENTRAR CENTRALIZADO */
+body:has(#toggle-tema:checked) #form-login .botao-entrar {
+    display: block;
+    margin: 20px auto 0;
+}
+
+
+/* LOGIN - EMAIL E SENHA */
+
+#form-login .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 18px;
+}
+
+#form-login .campo label {
+    display: block;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    line-height: 14px;
+}
+
+#form-login .campo input {
+    display: block;
+    width: 100%;
+    height: 30px;
+    min-height: 30px;
+    margin: 0;
+    padding: 4px 2px;
+
+    border: none;
+    border-bottom: 1px solid #D2D4CF;
+    border-radius: 0;
+
+    background: transparent;
+    box-sizing: border-box;
+}
+
+#form-login .campo input:focus {
+    outline: none;
+    border-bottom: 2px solid #576C6D;
+}
+
+
+/* LOGIN - MODO ESCURO AUTOMÁTICO */
+
+@media (prefers-color-scheme: dark) {
+
+    body.pagina-login {
+        background: linear-gradient(
+            0.52deg,
+            #10030D 0.44%,
+            #000000 99.56%
+        );
+        color: #E9DBE8;
+    }
+
+    body.pagina-login #caixa-login {
+        background: linear-gradient(
+            180deg,
+            #161316 0%,
+            #1D151C 100%
+        );
+        border-color: #493B47;
+    }
+
+    body.pagina-login .titulo-login,
+    body.pagina-login #cabecalho-login .logo,
+    body.pagina-login #form-login .campo label {
+        color: #E9DBE8;
+    }
+
+    body.pagina-login #form-login .campo input {
+        background: transparent;
+        color: #E9DBE8;
+        border-bottom: 1px solid #8B6B82;
+    }
+
+    body.pagina-login .icone-login {
+        filter: brightness(0) invert(1);
+    }
+
+    body.pagina-login .botao-entrar {
+        background: #8B6B82;
+        color: #FFFFFF;
+    }
+}
+
+/* ADICIONAR COMPROMISSO - CELULAR */
+
+@media (max-width: 600px) {
+
+    #overlay-adicionar-compromisso {
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    #overlay-adicionar-compromisso .overlay-caixa {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: 85dvh;
+        padding: 20px;
+        overflow-y: auto;
+        border-radius: 25px;
+    }
+
+    #form-adicionar-compromisso {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    #form-adicionar-compromisso .campo {
+        margin-bottom: 4px;
+        gap: 4px;
+    }
+
+    #form-adicionar-compromisso .campo input,
+    #form-adicionar-compromisso .campo select {
+        min-height: 36px;
+        padding: 6px 4px;
+    }
+
+    #form-adicionar-compromisso textarea {
+        min-height: 90px;
+        height: 90px;
+        resize: vertical;
+    }
+
+    #overlay-adicionar-compromisso .overlay-topo {
+        margin-bottom: 12px;
+    }
+}
+
+/* STUDYFLOW - PC E CELULAR */
+
+/* Logo no estado normal */
+#cabecalho .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: stretch;
+    padding: 0 12px;
+
+    min-height: 55px;
+    box-sizing: border-box;
+
+    cursor: pointer;
+    transition: background 0.2s ease,
+                color 0.2s ease;
+}
+
+/* MODO CLARO - MENU ABERTO */
+body:has(#toggle-menu:checked) #cabecalho .logo {
+    background: #576C6D;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
+/* MODO ESCURO - MENU ABERTO */
+body:has(#toggle-tema:checked):has(#toggle-menu:checked)
+#cabecalho .logo {
+    background: #8B6B82;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+    #cabecalho .logo {
+        min-height: 49px;
+        padding: 0 10px;
+        font-size: 18px;
+    }
+}
+
+/* NOTIFICAÇÕES E PERFIL - BOTÕES ATIVOS */
+
+/* Mantém o fundo original dos botões */
+body:has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"],
+body:has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 248, 238, 0.5) 0%,
+        #EFF3E9 100%
+    );
+}
+
+/* Modo claro: altera somente a cor dos ícones */
+body:has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"] img,
+body:has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0) saturate(100%)
+            invert(35%) sepia(13%)
+            saturate(654%) hue-rotate(133deg);
+}
+
+/* Modo escuro: altera somente a cor dos ícones */
+body:has(#toggle-tema:checked):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"] img,
+body:has(#toggle-tema:checked):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0) saturate(100%)
+            invert(70%) sepia(13%)
+            saturate(600%) hue-rotate(275deg);
+}
+
+/* MODO ESCURO - NOTIFICAÇÕES E PERFIL ATIVOS */
+
+/* Mantém o fundo dos botões no modo escuro */
+body:has(#toggle-tema:checked):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"],
+body:has(#toggle-tema:checked):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] {
+    background: linear-gradient(
+        180deg,
+        #40313C 0%,
+        #261B25 100%
+    );
+}
+
+/* Apenas os ícones ficam em roxo claro */
+body:has(#toggle-tema:checked):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"] img,
+body:has(#toggle-tema:checked):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0) saturate(100%)
+            invert(75%) sepia(10%)
+            saturate(450%) hue-rotate(275deg);
+}
+
+/* NOTIFICAÇÕES E PERFIL - CORES INVERTIDAS */
+
+/* MODO CLARO - CLICADO */
+body:not(:has(#toggle-tema:checked)):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"],
+body:not(:has(#toggle-tema:checked)):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] {
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+/* ÍCONES CLAROS */
+body:not(:has(#toggle-tema:checked)):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"] img,
+body:not(:has(#toggle-tema:checked)):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0) invert(1);
+}
+
+/* MODO ESCURO - CLICADO */
+body:has(#toggle-tema:checked):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"],
+body:has(#toggle-tema:checked):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] {
+    background: #E9DBE8;
+    color: #1D151C;
+}
+
+/* ÍCONES ESCUROS */
+body:has(#toggle-tema:checked):has(#toggle-notificacoes:checked)
+#cabecalho label[for="toggle-notificacoes"] img,
+body:has(#toggle-tema:checked):has(#toggle-perfil:checked)
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0);
+}
+
+/* ÍCONES NOTIFICAÇÕES E PERFIL - VERDE */
+
+body:not(:has(#toggle-tema:checked))
+#cabecalho label[for="toggle-notificacoes"] img,
+body:not(:has(#toggle-tema:checked))
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0) saturate(100%)
+            invert(40%) sepia(12%)
+            saturate(565%) hue-rotate(134deg)
+            brightness(94%) contrast(91%);
+}
+
+/* MODO ESCURO - ÍCONES NOTIFICAÇÕES E PERFIL */
+
+body:has(#toggle-tema:checked)
+#cabecalho label[for="toggle-notificacoes"] img,
+body:has(#toggle-tema:checked)
+#cabecalho label[for="toggle-perfil"] img {
+    filter: brightness(0) saturate(100%)
+            invert(96%) sepia(5%)
+            saturate(153%) hue-rotate(18deg)
+            brightness(102%);
+}
+
+/* PERFIL - NÃO PREENCHER AO PASSAR O MOUSE */
+
+/* Modo claro */
+body:not(:has(#toggle-tema:checked))
+#cabecalho label[for="toggle-perfil"]:hover {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 248, 238, 0.5) 0%,
+        #EFF3E9 100%
+    );
+    color: #576C6D;
+}
+
+/* Modo escuro */
+body:has(#toggle-tema:checked)
+#cabecalho label[for="toggle-perfil"]:hover {
+    background: linear-gradient(
+        180deg,
+        #40313C 0%,
+        #261B25 100%
+    );
+    color: #F2F1ED;
+}
+
+/* ==========================================
+   CORREÇÃO DEFINITIVA - LOGIN STUDYFLOW
+   ========================================== */
+
+/* Fundo da página */
+body.pagina-login {
+    background: linear-gradient(
+        180deg,
+        #EEEEEE 0%,
+        #A4C3C4 100%
+    ) !important;
+    color-scheme: light;
+}
+
+/* Caixa externa */
+body.pagina-login #conteudo-login {
+    display: block;
+    width: min(430px, calc(100% - 32px));
+    max-width: 430px;
+    height: auto;
+    min-height: 0;
+
+    margin: 100px auto 40px;
+    padding: 0;
+
+    background: #FFF9F0 !important;
+    border-radius: 28px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Caixa interna - remove o retângulo escuro */
+body.pagina-login #conteudo-login #caixa-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+
+    margin: 0;
+    padding: 30px 35px 35px;
+
+    background: transparent !important;
+    background-image: none !important;
+    border: none;
+    border-radius: 28px;
+    box-shadow: none;
+}
+
+/* Título */
+body.pagina-login #caixa-login .titulo-login {
+    order: 1;
+    width: 100%;
+    margin: 0 0 20px;
+
+    color: #4E5554 !important;
+    background: transparent !important;
+
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Ícone */
+body.pagina-login #caixa-login .icone-login {
+    order: 2;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+
+    background: transparent !important;
+    object-fit: contain;
+    filter: none;
+}
+
+/* Formulário */
+body.pagina-login #caixa-login #form-login {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 310px;
+    margin: 0;
+    padding: 0;
+
+    background: transparent !important;
+    background-image: none !important;
+    border: none;
+    box-shadow: none;
+}
+
+/* Campos */
+body.pagina-login #form-login .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px !important;
+
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 0;
+
+    background: transparent !important;
+}
+
+/* Rótulos */
+body.pagina-login #form-login .campo label {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #4E5554 !important;
+    background: transparent !important;
+
+    font-size: 11px;
+    line-height: 16px;
+    text-align: left;
+}
+
+/* Inputs */
+body.pagina-login #form-login .campo input {
+    display: block;
+    width: 100%;
+    height: 32px !important;
+    min-height: 32px !important;
+
+    margin: 0 !important;
+    padding: 4px 2px !important;
+
+    color: #4E5554 !important;
+    background: transparent !important;
+
+    border: none;
+    border-bottom: 1px solid #D2D4CF;
+    border-radius: 0;
+
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+/* Botão Entrar */
+body.pagina-login #form-login .botao-entrar {
+    align-self: center;
+    margin-top: 6px;
+
+    background: #576C6D;
+    color: #FFFFFF;
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    body.pagina-login #conteudo-login {
+        margin: 65px auto 30px;
+    }
+
+    body.pagina-login #conteudo-login #caixa-login {
+        padding: 26px 22px;
+    }
+}
